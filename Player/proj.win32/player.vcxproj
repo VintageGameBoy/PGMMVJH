@@ -146,9 +146,9 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);mozjs-33.lib;OpenAL32.lib;dinput8.lib;libvlc.lib;libvlccore.lib;Version.lib;Dbghelp.lib</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);mozjs-33.lib;OpenAL32.lib;dinput8.lib;libvlc.lib;libvlccore.lib;Version.lib;Dbghelp.lib;steam_api.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);$(ProjectDir)..\..\Editor\3rdparty\boost_1_62_0\stage\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);$(ProjectDir)..\..\Editor\3rdparty\boost_1_62_0\stage\lib;$(ProjectDir)..\Classes\External\steam\redistributable_bin</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <TargetMachine>MachineX86</TargetMachine>
@@ -159,7 +159,9 @@
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir)"</Command>
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir)"
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\redistributable_bin\steam_api.dll" "$(OutDir)"
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\steam_appid.txt" "$(OutDir)"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup>
@@ -196,9 +198,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
       <AdditionalOptions>-Zm256 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);mozjs-33.lib;OpenAL32.lib;dinput8.lib;libvlc.lib;libvlccore.lib;libboost_system-vc120-mt-1_62.lib;Version.lib;Dbghelp.lib</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);mozjs-33.lib;OpenAL32.lib;dinput8.lib;libvlc.lib;libvlccore.lib;libboost_system-vc120-mt-1_62.lib;Version.lib;Dbghelp.lib;steam_api.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);$(ProjectDir)..\..\Editor\3rdparty\boost_1_62_0\stage\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);$(ProjectDir)..\..\Editor\3rdparty\boost_1_62_0\stage\lib;$(ProjectDir)..\Classes\External\steam\redistributable_bin</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -214,7 +216,9 @@ xcopy "$(ProjectDir)..\Resources" "$(OutDir)\Resources\" /D /E /I /F /Y
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir)"</Command>
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir)"
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\redistributable_bin\steam_api.dll" "$(OutDir)"
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\steam_appid.txt" "$(OutDir)"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Runtime|Win32'">
@@ -235,9 +239,9 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir
       <AdditionalOptions>-Zm256 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);mozjs-33.lib;OpenAL32.lib;dinput8.lib;libvlc.lib;libvlccore.lib;libboost_system-vc120-mt-1_62.lib;Version.lib;Dbghelp.lib</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);mozjs-33.lib;OpenAL32.lib;dinput8.lib;libvlc.lib;libvlccore.lib;libboost_system-vc120-mt-1_62.lib;Version.lib;Dbghelp.lib;steam_api.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);$(ProjectDir)..\..\Editor\3rdparty\boost_1_62_0\stage\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);$(ProjectDir)..\..\Editor\3rdparty\boost_1_62_0\stage\lib;$(ProjectDir)..\Classes\External\steam\redistributable_bin</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -253,7 +257,9 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir)"</Command>
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir)"
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\redistributable_bin\steam_api.dll" "$(OutDir)"
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\steam_appid.txt" "$(OutDir)"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='DebugMenuRuntime|Win32'">
@@ -274,9 +280,9 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir
       <AdditionalOptions>-Zm256 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>libcurl.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);mozjs-33.lib;OpenAL32.lib;dinput8.lib;libvlc.lib;libvlccore.lib;libboost_system-vc120-mt-1_62.lib;Version.lib;Dbghelp.lib</AdditionalDependencies>
+      <AdditionalDependencies>libcurl.lib;websockets.lib;%(AdditionalDependencies);$(_COCOS_LIB_WIN32_BEGIN);$(_COCOS_LIB_WIN32_END);mozjs-33.lib;OpenAL32.lib;dinput8.lib;libvlc.lib;libvlccore.lib;libboost_system-vc120-mt-1_62.lib;Version.lib;Dbghelp.lib;steam_api.lib</AdditionalDependencies>
       <OutputFile>$(OutDir)$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);$(ProjectDir)..\..\Editor\3rdparty\boost_1_62_0\stage\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(OutDir);%(AdditionalLibraryDirectories);$(_COCOS_LIB_PATH_WIN32_BEGIN);$(_COCOS_LIB_PATH_WIN32_END);$(ProjectDir)..\..\Editor\3rdparty\boost_1_62_0\stage\lib;$(ProjectDir)..\Classes\External\steam\redistributable_bin</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
       <OptimizeReferences>true</OptimizeReferences>
@@ -292,7 +298,9 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir
     </PostBuildEvent>
     <PreLinkEvent>
       <Command>if not exist "$(OutDir)" mkdir "$(OutDir)"
-xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir)"</Command>
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir)"
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\redistributable_bin\steam_api.dll" "$(OutDir)"
+xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\steam_appid.txt" "$(OutDir)"</Command>
     </PreLinkEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -456,6 +464,7 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir
     <ClCompile Include="..\Classes\Lib\Jsb\jsb_agtk_scenes.cpp" />
     <ClCompile Include="..\Classes\Lib\Jsb\jsb_agtk_ses.cpp" />
     <ClCompile Include="..\Classes\Lib\Jsb\jsb_agtk_settings.cpp" />
+    <ClCompile Include="..\Classes\Lib\Jsb\jsb_agtk_steam.cpp" />
     <ClCompile Include="..\Classes\Lib\Jsb\jsb_agtk_systems.cpp" />
     <ClCompile Include="..\Classes\Lib\Jsb\jsb_agtk_texts.cpp" />
     <ClCompile Include="..\Classes\Lib\Jsb\jsb_agtk_tilesets.cpp" />
@@ -553,6 +562,51 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir
     <ClInclude Include="..\Classes\External\SSPlayer\SS6PlayerData.h" />
     <ClInclude Include="..\Classes\External\SSPlayer\SS6PlayerPlatform.h" />
     <ClInclude Include="..\Classes\External\SSPlayer\SS6PlayerTypes.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamapps.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamappticket.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamclient.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamcontroller.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamdualsense.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamfriends.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamgamecoordinator.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamgameserver.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamgameserverstats.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamhtmlsurface.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamhttp.h" />
+    <ClInclude Include="..\Classes\External\steam\isteaminput.h" />
+    <ClInclude Include="..\Classes\External\steam\isteaminventory.h" />
+    <ClInclude Include="..\Classes\External\steam\isteammatchmaking.h" />
+    <ClInclude Include="..\Classes\External\steam\isteammusic.h" />
+    <ClInclude Include="..\Classes\External\steam\isteammusicremote.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamnetworking.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamnetworkingmessages.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamnetworkingsockets.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamnetworkingutils.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamparentalsettings.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamps3overlayrenderer.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamremoteplay.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamremotestorage.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamscreenshots.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamtimeline.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamugc.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamuser.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamuserstats.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamutils.h" />
+    <ClInclude Include="..\Classes\External\steam\isteamvideo.h" />
+    <ClInclude Include="..\Classes\External\steam\matchmakingtypes.h" />
+    <ClInclude Include="..\Classes\External\steam\steamclientpublic.h" />
+    <ClInclude Include="..\Classes\External\steam\steamencryptedappticket.h" />
+    <ClInclude Include="..\Classes\External\steam\steamhttpenums.h" />
+    <ClInclude Include="..\Classes\External\steam\steamnetworkingfakeip.h" />
+    <ClInclude Include="..\Classes\External\steam\steamnetworkingtypes.h" />
+    <ClInclude Include="..\Classes\External\steam\steamps3params.h" />
+    <ClInclude Include="..\Classes\External\steam\steamtypes.h" />
+    <ClInclude Include="..\Classes\External\steam\steamuniverse.h" />
+    <ClInclude Include="..\Classes\External\steam\steam_api.h" />
+    <ClInclude Include="..\Classes\External\steam\steam_api_common.h" />
+    <ClInclude Include="..\Classes\External\steam\steam_api_flat.h" />
+    <ClInclude Include="..\Classes\External\steam\steam_api_internal.h" />
+    <ClInclude Include="..\Classes\External\steam\steam_gameserver.h" />
     <ClInclude Include="..\Classes\External\vlc\include\vlc\deprecated.h" />
     <ClInclude Include="..\Classes\External\vlc\include\vlc\libvlc.h" />
     <ClInclude Include="..\Classes\External\vlc\include\vlc\libvlc_events.h" />
@@ -665,6 +719,7 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir
     <ClInclude Include="..\Classes\Lib\Jsb\jsb_agtk_scenes.h" />
     <ClInclude Include="..\Classes\Lib\Jsb\jsb_agtk_ses.h" />
     <ClInclude Include="..\Classes\Lib\Jsb\jsb_agtk_settings.h" />
+    <ClInclude Include="..\Classes\Lib\Jsb\jsb_agtk_steam.h" />
     <ClInclude Include="..\Classes\Lib\Jsb\jsb_agtk_systems.h" />
     <ClInclude Include="..\Classes\Lib\Jsb\jsb_agtk_texts.h" />
     <ClInclude Include="..\Classes\Lib\Jsb\jsb_agtk_tilesets.h" />
@@ -728,6 +783,12 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\vlc\prebuilt\*" "$(OutDir
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Classes\External\steam\steam_api.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Classes\External\steam\steam_appid.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

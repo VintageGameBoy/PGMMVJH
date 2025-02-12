@@ -30,6 +30,8 @@
 #include "Lib/Jsb/jsb_agtk_objectInstances.h"
 #include "Lib/Jsb/jsb_agtk_sceneInstances.h"
 #include "Lib/Jsb/jsb_agtk_databases.h"
+// steam初始化
+#include "Lib/Jsb/jsb_agtk_steam.h"
 // #AGTK-NX #AGTK-WIN
 #if 1
 #include "Lib/Jsb/jsb_agtk_systems.h"
@@ -457,6 +459,8 @@ bool JavascriptManager::addObject(JSContext* cx, JS::HandleObject global)
 	jsb_register_agtk_objectInstances(cx, robj);
 	jsb_register_agtk_sceneInstances(cx, robj);
 	jsb_register_agtk_databases(cx, robj);
+	//steam注册
+	jsb_register_agtk_steam(cx, robj);
 // #AGTK-NX #AGTK-WIN
 #if 1
 	jsb_register_agtk_systems(cx, robj);

@@ -61,6 +61,9 @@
     <Filter Include="src\Lib\Runtime">
       <UniqueIdentifier>{887a7fe9-e9c6-4a5a-bf59-cafb6ed359b9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\External\steam">
+      <UniqueIdentifier>{2b52b53b-f3e1-4045-87b9-5bb9af73e097}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -380,6 +383,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\Manager\ProjectLoadingManager.cpp">
       <Filter>src\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Lib\Jsb\jsb_agtk_steam.cpp">
+      <Filter>src\Lib\Jsb</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -992,10 +998,158 @@
     <ClInclude Include="..\Classes\Manager\ProjectLoadingManager.h">
       <Filter>src\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamapps.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamappticket.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamclient.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamcontroller.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamdualsense.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamfriends.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamgamecoordinator.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamgameserver.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamgameserverstats.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamhtmlsurface.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamhttp.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteaminput.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteaminventory.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteammatchmaking.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteammusic.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteammusicremote.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamnetworking.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamnetworkingmessages.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamnetworkingsockets.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamnetworkingutils.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamparentalsettings.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamps3overlayrenderer.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamremoteplay.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamremotestorage.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamscreenshots.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamtimeline.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamugc.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamuser.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamuserstats.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamutils.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\isteamvideo.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\matchmakingtypes.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steam_api.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steam_api_common.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steam_api_flat.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steam_api_internal.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steam_gameserver.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steamclientpublic.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steamencryptedappticket.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steamhttpenums.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steamnetworkingfakeip.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steamnetworkingtypes.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steamps3params.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steamtypes.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\steam\steamuniverse.h">
+      <Filter>src\External\steam</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Lib\Jsb\jsb_agtk_steam.h">
+      <Filter>src\Lib\Jsb</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="game.rc">
       <Filter>resource</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Classes\External\steam\steam_api.json">
+      <Filter>src\External\steam</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="..\Classes\External\steam\steam_appid.txt">
+      <Filter>src\External</Filter>
+    </Text>
   </ItemGroup>
 </Project>
