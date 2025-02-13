@@ -2,8 +2,8 @@
 
 ## 介绍 / Introduction
 
-- 这个"Pixel Game Maker MV Player Open Source Edition JHVersion"是根据"Pixel Game Maker MV Player Open Source Edition"修改而来的版本，该版本添加了Steamworks API的支持.
-- "Pixel Game Maker MV Player Open Source Edition JHVersion" is a modified version of the "Pixel Game Maker MV Player Open Source Edition," which adds support for the Steamworks API.
+- 这个`Pixel Game Maker MV Player Open Source Edition JHVersion`是根据`Pixel Game Maker MV Player Open Source Edition`修改而来的版本，该版本添加了Steamworks API的jsb绑定支持.
+- `Pixel Game Maker MV Player Open Source Edition JHVersion` is a modified version of the `Pixel Game Maker MV Player Open Source Edition` which adds support for the Steamworks API.
 - My English is not very good, to avoid ambiguity, so the documentation about how to use it is only in Chinese.
 
 ## 使用说明 / Usage Instructions

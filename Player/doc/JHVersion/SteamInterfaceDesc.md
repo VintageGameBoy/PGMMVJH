@@ -20,9 +20,8 @@
 
 **调用示例**:
 ```javascript
-var steamAppId = 123456;  // 替换为实际的Steam App ID
-var result = Agtk.steam.steamapi_restarappifnecessary(steamAppId);
-Agtk.log(result);  // 输出: true 或 false
+var steamAppId = 2692950;
+Agtk.log("[STEAM]steam初始化情况：" + Agtk.steam.steamapi_restarappifnecessary(steamAppId));  // 输出: true 或 false
 ```
 
 ---
@@ -116,7 +115,11 @@ Agtk.log("[STEAM]当前steam用户名:" + username);  // 输出: 当前Steam用�
 Agtk.log("[STEAM]准备获取成就状态");
 var achievementName = "NEW_ACHIEVEMENT_1_3";
 var achievementstate = Agtk.steam.steamuserstats_getachievementstate(achievementName);
-Agtk.log("[STEAM]成就:" + achievementName + " 状态:" + achievementstate);
+if(achievementstate){
+  Agtk.log("[STEAM]成就:" + achievementName + " 状态:" + achievementstate);
+}else{
+  Agtk.log("[STEAM]成就:" + achievementName + " 获取失败 请检查");
+}
 ```
 
 ---

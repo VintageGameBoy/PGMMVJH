@@ -104,8 +104,8 @@ bool js_steam_SteamAPI_RestartAppIfNecessary(JSContext* cx, unsigned argc, JS::V
 		args.rval().set(JS::NullValue());
 		return false;
 	}
-	auto appleId = JavascriptManager::getInt32(v);
-	bool restartNeeded = SteamAPI_RestartAppIfNecessary(appleId);
+	auto appId = JavascriptManager::getInt32(v);
+	bool restartNeeded = SteamAPI_RestartAppIfNecessary(appId);
 	args.rval().set(JS::BooleanValue(restartNeeded));
 	return true;
 }
@@ -126,6 +126,10 @@ bool js_steam_SteamAPI_Shutdown(JSContext* cx, unsigned argc, JS::Value* vp) {
 
 bool js_steam_SteamUserStats_StoreStats(JSContext* cx, unsigned argc, JS::Value* vp) {
 	JS::CallArgs args = CallArgsFromVp(argc, vp);
+	if (!SteamUserStats()) { //检查初始化启动状态 防空指针异常
+		args.rval().set(JS::NullValue());
+		return false;
+	}
 	bool storeStatsed = SteamUserStats()->StoreStats();
 	args.rval().set(JS::BooleanValue(storeStatsed));
 	return true;
@@ -133,7 +137,11 @@ bool js_steam_SteamUserStats_StoreStats(JSContext* cx, unsigned argc, JS::Value*
 
 bool js_steam_SteamFriends_GetSteamUserName(JSContext* cx, unsigned argc, JS::Value* vp) {
 	JS::CallArgs args = CallArgsFromVp(argc, vp);
-	if (SteamFriends() != NULL) {
+	if (SteamFriends() == nullptr) {
+		args.rval().set(JS::NullValue());
+		return false;
+	}
+	else {
 		const char* name = SteamFriends()->GetPersonaName();
 		JS::Rooted<JSString*> jsName(cx, JS_NewStringCopyZ(cx, name));
 		if (jsName)
@@ -141,14 +149,12 @@ bool js_steam_SteamFriends_GetSteamUserName(JSContext* cx, unsigned argc, JS::Va
 		else
 			args.rval().set(JS::NullValue());
 	}
-	else
-		args.rval().set(JS::NullValue());
 	return true;
 }
 
 bool js_steam_SteamUserStats_UnlockedAchievement(JSContext* cx, unsigned argc, JS::Value* vp) {
 	JS::CallArgs args = CallArgsFromVp(argc, vp);
-	if (argc < 1 || !args[0].isString()) {
+	if (argc < 1 || !args[0].isString()|| SteamUserStats() == nullptr) {
 		args.rval().set(JS::NullValue());
 		return false;
 	}
@@ -166,7 +172,7 @@ bool js_steam_SteamUserStats_UnlockedAchievement(JSContext* cx, unsigned argc, J
 
 bool js_steam_SteamUserStats_ResetAchievement(JSContext* cx, unsigned argc, JS::Value* vp) {
 	JS::CallArgs args = CallArgsFromVp(argc, vp);
-	if (argc < 1 || !args[0].isString()) {
+	if (argc < 1 || !args[0].isString() || SteamUserStats() == nullptr) {
 		args.rval().set(JS::NullValue());
 		return false;
 	}
@@ -184,6 +190,10 @@ bool js_steam_SteamUserStats_ResetAchievement(JSContext* cx, unsigned argc, JS::
 
 bool js_steam_SteamUserStats_GetAchievements(JSContext* cx, unsigned argc, JS::Value* vp) {
 	JS::CallArgs args = CallArgsFromVp(argc, vp);
+	if (SteamUserStats() == nullptr) {
+		args.rval().set(JS::NullValue());
+		return false;
+	}
 	int numAchievements = SteamUserStats()->GetNumAchievements();
 	JS::RootedObject achievementArray(cx, JS_NewArrayObject(cx, 0));
 	if (!achievementArray) {
@@ -231,7 +241,7 @@ bool js_steam_SteamUserStats_ResetAllStats(JSContext* cx, unsigned argc, JS::Val
 	JS::CallArgs args = CallArgsFromVp(argc, vp);
 	auto len = args.length();
 	// 检查参数数量
-	if (len < 1|| !args[0].isBoolean()) {
+	if (len < 1 || !args[0].isBoolean() || SteamUserStats() == nullptr) {
 		args.rval().set(JS::NullValue());
 		return false;
 	}
@@ -243,7 +253,7 @@ bool js_steam_SteamUserStats_ResetAllStats(JSContext* cx, unsigned argc, JS::Val
 
 bool js_steam_SteamUserStats_GetAchievementState(JSContext* cx, unsigned argc, JS::Value* vp) {
 	JS::CallArgs args = CallArgsFromVp(argc, vp);
-	if (argc < 1 || !args[0].isString()) {
+	if (argc < 1 || !args[0].isString() || SteamUserStats() == nullptr) {
 		args.rval().set(JS::NullValue());
 		return false;
 	}
@@ -260,7 +270,6 @@ bool js_steam_SteamUserStats_GetAchievementState(JSContext* cx, unsigned argc, J
 		args.rval().set(JS::NullValue());
 		return false;
 	}
-	JS_free(cx, achievementName);
 	args.rval().set(JS::BooleanValue(result));
 	return true;
 }
