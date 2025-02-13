@@ -40,7 +40,7 @@ Agtk.log(result);  // 输出: true 或 false
 **调用示例**:
 ```javascript
 var result = Agtk.steam.steamapi_init();
-Agtk.log(result);  // 输出: true 或 false
+Agtk.log("[STEAM]steam初始化情况：" + result);
 ```
 
 ---
@@ -95,7 +95,28 @@ Agtk.log(result);  // 输出: true 或 false
 **调用示例**:
 ```javascript
 var username = Agtk.steam.steamfriends_getsteamusername();
-Agtk.log(username);  // 输出: 当前Steam用户名
+Agtk.log("[STEAM]当前steam用户名:" + username);  // 输出: 当前Steam用户名
+```
+
+---
+
+### `Agtk.steam.steamuserstats_getachievementstate(achievementName)`
+
+检查一个成就是否已经解锁。
+
+**参数**:
+- `achievementName` (String): 要检查的成就名称。
+
+**返回值**:
+- `Boolean`: 返回`true`表示已解锁成就，`false`表示未解锁。
+- 失败时：返回 null（例如 Steam 未初始化或用户未登录）。
+
+**调用示例**:
+```javascript
+Agtk.log("[STEAM]准备获取成就状态");
+var achievementName = "NEW_ACHIEVEMENT_1_3";
+var achievementstate = Agtk.steam.steamuserstats_getachievementstate(achievementName);
+Agtk.log("[STEAM]成就:" + achievementName + " 状态:" + achievementstate);
 ```
 
 ---

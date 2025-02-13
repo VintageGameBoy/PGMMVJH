@@ -27,6 +27,8 @@ static bool js_steam_SteamUserStats_ResetAchievement(JSContext* cx, unsigned arg
 static bool js_steam_SteamUserStats_GetAchievements(JSContext* cx, unsigned argc, JS::Value* vp);
 // 重置所有统计信息 (false 仅重置所有统计) (true 重置所有统计和成就)
 static bool js_steam_SteamUserStats_ResetAllStats(JSContext* cx, unsigned argc, JS::Value* vp);
+// 获取一个成就的状态
+static bool js_steam_SteamUserStats_GetAchievementState(JSContext* cx, unsigned argc, JS::Value* vp);
 
 #pragma endregion
 
@@ -70,6 +72,7 @@ bool register_agtk_steam(JSContext* cx, JS::HandleObject object)
 		{ "steamuserstats_resetachievement", js_steam_SteamUserStats_ResetAchievement, 0, 0, 0 },
 		{ "steamuserstats_getachievements", js_steam_SteamUserStats_GetAchievements, 0, 0, 0 },
 		{ "steamuserstats_resetallstats", js_steam_SteamUserStats_ResetAllStats, 0, 0, 0 },
+		{ "steamuserstats_getachievementstate", js_steam_SteamUserStats_GetAchievementState, 0, 0, 0 },
 		{ NULL },
 	};
 	JS_DefineFunctions(cx, rsteam, steam_methods);
@@ -149,8 +152,7 @@ bool js_steam_SteamUserStats_UnlockedAchievement(JSContext* cx, unsigned argc, J
 		args.rval().set(JS::NullValue());
 		return false;
 	}
-	JSString* jsString = args[0].toString();
-	JS::Rooted<JSString*> rootedStr(cx, jsString);
+	JS::Rooted<JSString*> rootedStr(cx, args[0].toString());
 	char* achievementName = JS_EncodeStringToUTF8(cx, rootedStr);
 	if (achievementName == nullptr) {
 		args.rval().set(JS::NullValue());
@@ -168,8 +170,7 @@ bool js_steam_SteamUserStats_ResetAchievement(JSContext* cx, unsigned argc, JS::
 		args.rval().set(JS::NullValue());
 		return false;
 	}
-	JSString* jsString = args[0].toString();
-	JS::Rooted<JSString*> rootedStr(cx, jsString);
+	JS::Rooted<JSString*> rootedStr(cx, args[0].toString());
 	char* achievementName = JS_EncodeStringToUTF8(cx, rootedStr);
 	if (achievementName == nullptr) {
 		args.rval().set(JS::NullValue());
@@ -239,5 +240,30 @@ bool js_steam_SteamUserStats_ResetAllStats(JSContext* cx, unsigned argc, JS::Val
 	args.rval().setBoolean(result);
 	return true;
 }
+
+bool js_steam_SteamUserStats_GetAchievementState(JSContext* cx, unsigned argc, JS::Value* vp) {
+	JS::CallArgs args = CallArgsFromVp(argc, vp);
+	if (argc < 1 || !args[0].isString()) {
+		args.rval().set(JS::NullValue());
+		return false;
+	}
+	JS::Rooted<JSString*> rootedStr(cx, args[0].toString());
+	char* achievementName = JS_EncodeStringToUTF8(cx, rootedStr);
+	if (achievementName == nullptr) {
+		args.rval().set(JS::NullValue());
+		return false;
+	}
+	bool result = false;
+	bool success = SteamUserStats()->GetAchievement(achievementName, &result);
+	JS_free(cx, achievementName);
+	if (!success) {
+		args.rval().set(JS::NullValue());
+		return false;
+	}
+	JS_free(cx, achievementName);
+	args.rval().set(JS::BooleanValue(result));
+	return true;
+}
+
 
 #pragma endregion
