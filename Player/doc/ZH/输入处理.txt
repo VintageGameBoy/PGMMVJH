@@ -1,0 +1,107 @@
+# 输入处理
+
+※ 总结调查结果。
+
+输入处理在 `InputManager.h/InputManager.cpp` 中进行。
+
+从物理设备获取输入是通过事件监听器（Event Listener）实现的。
+
+在 `GameScene` 的初始化处理中，会调用 `InputEventListener::registerInputListener()`，
+并在 `registerInputListener()` 中注册事件监听器。
+※ 解除注册会在 `GameScene`（Node）被销毁时自动进行。
+
+通过事件监听器的注册，可以获取并处理以下输入：
+- 游戏控制器的连接、断开、数字按钮按下、释放、重复、模拟输入更新（`EventListenerController`）
+- 鼠标按钮的按下、释放、移动、滚动输入（`EventListenerMouse`）
+- 键盘按键的按下、释放、字符输入（`EventListenerKeyboard`）
+
+输入的原始数据会存储在 `InputManager::_inputDataRow` 中。
+
+## 键盘输入
+
+由于支持多个按键同时按下，因此数据以列表形式存储。
+
+- **按键按下时**
+  - `cocos2d-x` 的键码转换为 `アクツクMV`（Action Game Maker MV）的键码，并与扫描码（scancode）一起进行注册处理。
+  - 在注册处理中，若 `_inputList` 中对应键码的 `InputData` 不存在，则创建并注册，并设置按下状态信息。
+  - 还会将该数据添加到 `_pressedDataList` 中。
+
+- **按键释放时**
+  - `cocos2d-x` 的键码转换为 `アクツクMV` 的键码，并与扫描码一起进行解除处理。
+  - 在解除处理中，若 `_inputList` 中存在该键码对应的 `InputData`，则更新释放状态信息。
+  - 还会从 `_pressedDataList` 中移除该数据。
+
+- **字符键按下时**
+  - 从 `_pressedDataList` 的开头移除一项，并对取出的 `InputData` 设定 `_charData`。
+  - **推测**：可能是为了解决按键通知的键码与字符输入通知的键码不同的问题？
+
+**TODO**: 应优化 `_inputList` 的搜索方式，避免全列表搜索。
+
+### 键盘输入数据结构
+| 参数名         | 描述 |
+|---------------|------|
+| `_keyCode`    | 按键输入通知的键码 |
+| `_charCode`   | 默认 -1。字符键输入时会设置相应的键码 |
+| `_scancode`   | 扫描码 |
+| `_press`      | 按键是否按下状态，按下时为 `true`，默认 `false` |
+| `_release`    | 在 `update()` 处理时，若按键刚释放则为 `true`，默认 `false` |
+| `_trigger`    | 在 `update()` 处理时，若按键刚按下则为 `true`，默认 `false` |
+| `_updateTrigger` | 按键按下时设为 `false`，`update()` 处理后设为 `true`，默认 `true` |
+| `_updateRelease` | 按键释放时设为 `false`，`update()` 处理后设为 `true`，默认 `true` |
+
+#### 按键按下时的状态变化：
+- `_charCode = -1`
+- 设定 `_scancode`
+- `_updateTrigger = false`
+- `_trigger = true`
+- `_press = true`
+
+#### 按键释放时的状态变化：
+- `_press = false`
+- `_updateRelease = false`
+- `_release = true`
+
+## `InputManager` 相关处理
+
+`InputManager::update()` 和 `InputManager::afterUpdate()` 由调度器调用。
+
+- `InputManager::afterUpdate()`
+  - 负责自动分配游戏玩家的控制器。
+
+- `InputManager::update()`
+  - 处理以下逻辑：
+    - 初次检测控制器连接
+    - 更新原始输入数据
+    - 更新输入控制器状态
+    - 解除未分配控制器的玩家绑定，并在显式指定控制器 ID 时重新分配
+    - 计算鼠标指针的坐标，并更新项目的全局变量 `鼠标坐标X` 和 `鼠标坐标Y`
+
+### `InputManager` 主要成员
+- `_inputControllerList`
+  - 存储 16+1 个输入设备的控制器字典。
+  - `-1`: 键盘 & 鼠标
+  - `0~`: 游戏控制器
+
+- `_selectInputControllerList`
+  - 存储已分配给游戏玩家的输入控制器字典。
+
+### `InputController` 主要成员
+- `_inputDataRaw`
+- `_inputGamepadData`
+- `_inputKeyboardData`
+- `_inputMouseData`
+  - 这些成员引用 `InputManager` 或 `InputManager::_inputDataRaw`。
+
+## 录制（Capture）相关支持
+
+录制功能的实现逻辑如下：
+1. **暂存输入数据**
+   - 物理设备输入数据会先存入缓冲区，并在 `InputManager::update()` 时统一处理。
+2. **录制输入数据**
+   - 将缓冲的输入数据与游戏帧绑定后保存，即可作为回放数据。
+   - 为了保证回放时游戏行为一致，开始录制时会生成随机数种子，并用 `srand()` 进行初始化。
+3. **回放输入数据**
+   - 读取回放数据，并根据游戏帧进度按顺序处理输入数据，使游戏与录制时的操作一致。
+   - 由于随机数种子相同，游戏行为不会因随机因素发生变化。
+
+---

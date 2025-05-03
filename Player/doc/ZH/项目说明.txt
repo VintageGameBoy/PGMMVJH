@@ -1,0 +1,181 @@
+类结构
+ ├ Data		用于读取并保存游戏项目数据的类。保存游戏运行时的数据。
+ ｜  ├ AnimationData.cpp
+ ｜  ├ AnimationData.h		读取并保存动画数据
+ ｜  ├ AssetData.cpp
+ ｜  ├ AssetData.h		读取并保存各种素材设置和插件设置（包括图片、字体、文本、视频、BGM、音效、语音、项目公共变量、项目公共开关、动画专用等）
+ ｜  ├ ObjectActionLinkConditionData.cpp
+ ｜  ├ ObjectActionLinkConditionData.h	读取并保存动作链接条件数据
+ ｜  ├ ObjectCommandData.cpp
+ ｜  ├ ObjectCommandData.h	读取并保存动作指令数据
+ ｜  ├ ObjectData.cpp
+ ｜  ├ ObjectData.h		读取并保存对象数据
+ ｜  ├ OthersData.cpp
+ ｜  ├ OthersData.h		读取并保存场景其他数据
+ ｜  ├ PlayData.cpp
+ ｜  ├ PlayData.h		保存游戏运行时项目公共开关/变量以及对象数据
+ ｜  ├ ProjectData.cpp
+ ｜  ├ ProjectData.h		读取并保存画面切换、传送门、游戏信息、音效设置、动作程序设置、操作键管理设置、玩家角色管理设置、粒子图片设置等整个项目数据
+ ｜  ├ SceneData.cpp
+ ｜  ├ SceneData.h		读取并保存场景的物理运算部件数据、场景布置对象数据、其他数据、图层数据和场景数据
+ ｜  ├ TileData.cpp
+ ｜  └ TileData.h		读取并保存图块和图块集数据
+ ├ External	外部库
+ ｜  ├ collision	碰撞检测类（四叉树）, http://brbranch.jp/blog/201607/cocos2d-x/fourtreecollision/
+ ｜  ｜  ├ collision_point.h
+ ｜  ｜  ├ CollisionComponent.cpp
+ ｜  ｜  ├ CollisionComponent.hpp
+ ｜  ｜  ├ CollisionDetaction.cpp	Detaction疑似为Detection的拼写错误，需修正
+ ｜  ｜  ├ CollisionDetaction.hpp
+ ｜  ｜  ├ CollisionUtils.cpp
+ ｜  ｜  └ CollisionUtils.hpp
+ ｜  ├ gif		GIF库, http://giflib.sourceforge.net/
+ ｜  ｜  ├ dgif_lib.c
+ ｜  ｜  ├ egif_lib.c
+ ｜  ｜  ├ gif_err.c
+ ｜  ｜  ├ gif_font.c
+ ｜  ｜  ├ gif_hash.c
+ ｜  ｜  ├ gif_hash.h
+ ｜  ｜  ├ gif_lib.h
+ ｜  ｜  ├ gif_lib_private.h
+ ｜  ｜  ├ gifalloc.c
+ ｜  ｜  ├ openbsd-reallocarray.c
+ ｜  ｜  └ quantize.c
+ ｜  ├ SplineInterp	样条插值类
+ ｜  ｜  ├ SplineInterp.cpp
+ ｜  ｜  └ SplineInterp.h
+ ｜  ├ SSPlayer		SpriteStudio6库, http://www.webtech.co.jp/spritestudio/
+ ｜  ├ Twofish		Twofish加密库
+ ｜  ├ vlc		libVLC库, http://www.videolan.org/vlc/index.ja.html
+ ｜  └ ColTrees.h	疑似碰撞检测类文件？因未使用建议删除
+ ├ Lib
+ ｜  ├ Jsb		脚本API实现类
+ ｜  ｜  ├ jsb_agtk_animations.cpp
+ ｜  ｜  ├ jsb_agtk_animations.h
+ ｜  ｜  ├ jsb_agtk_bgms.cpp
+ ｜  ｜  ├ jsb_agtk_bgms.h
+ ｜  ｜  ├ jsb_agtk_fonts.cpp
+ ｜  ｜  ├ jsb_agtk_fonts.h
+ ｜  ｜  ├ jsb_agtk_images.cpp
+ ｜  ｜  ├ jsb_agtk_images.h
+ ｜  ｜  ├ jsb_agtk_movies.cpp
+ ｜  ｜  ├ jsb_agtk_movies.h
+ ｜  ｜  ├ jsb_agtk_objectInstances.cpp
+ ｜  ｜  ├ jsb_agtk_objectInstances.h
+ ｜  ｜  ├ jsb_agtk_objects.cpp
+ ｜  ｜  ├ jsb_agtk_objects.h
+ ｜  ｜  ├ jsb_agtk_portals.cpp
+ ｜  ｜  ├ jsb_agtk_portals.h
+ ｜  ｜  ├ jsb_agtk_sceneInstances.cpp
+ ｜  ｜  ├ jsb_agtk_sceneInstances.h
+ ｜  ｜  ├ jsb_agtk_scenes.cpp
+ ｜  ｜  ├ jsb_agtk_scenes.h
+ ｜  ｜  ├ jsb_agtk_ses.cpp
+ ｜  ｜  ├ jsb_agtk_ses.h
+ ｜  ｜  ├ jsb_agtk_settings.cpp
+ ｜  ｜  ├ jsb_agtk_settings.h
+ ｜  ｜  ├ jsb_agtk_texts.cpp
+ ｜  ｜  ├ jsb_agtk_texts.h
+ ｜  ｜  ├ jsb_agtk_tilesets.cpp
+ ｜  ｜  ├ jsb_agtk_tilesets.h
+ ｜  ｜  ├ jsb_agtk_voices.cpp
+ ｜  ｜  └ jsb_agtk_voices.h
+ ｜  ├ Player	播放器类群 动画管理
+ ｜  ｜  ├ BasePlayer.cpp
+ ｜  ｜  ├ BasePlayer.h		图片动画/GIF动画/SpriteStudio动画的基类
+ ｜  ｜  ├ GifPlayer.cpp
+ ｜  ｜  ├ GifPlayer.h		GIF播放器类
+ ｜  ｜  ├ ImagePlayer.cpp
+ ｜  ｜  ├ ImagePlayer.h	图片播放器类
+ ｜  ｜  ├ SpinePlayer.cpp
+ ｜  ｜  ├ SpinePlayer.h	Spine播放器类
+ ｜  ｜  ├ SSPlayer.cpp
+ ｜  ｜  └ SSPlayer.h	Sprite Studio 播放器类
+ ｜  ├ Runtime		仅限运行时（发布版播放器）使用，用于读取加密数据的类
+ ｜  ｜  ├ FileUtils-runtime.cpp
+ ｜  ｜  └ FileUtils-runtime.h
+ ｜  ├ Animation.cpp
+ ｜  ├ Animation.h	动作动画类
+　　管理动画，抽象化对接SpriteStudio/Spine/Gif等
+ ｜  ├ BaseLayer.cpp
+ ｜  ├ BaseLayer.h	图层基类。要求子类必须在update方法中调用BaseLayer::update方法以实现旋转/翻转动画处理
+ ｜  ├ Bullet.cpp
+ ｜  ├ Bullet.h		子弹类。对agtk::Object附加子弹行为（向目标移动等）
+ ｜  ├ Camera.cpp
+ ｜  ├ Camera.h		摄像机类。实现跟随玩家对象等功能
+ ｜  ├ CameraObject.cpp
+ ｜  ├ CameraObject.h	沿路径移动摄像机的处理类
+ ｜  ├ Collision.cpp
+ ｜  ├ Collision.h	处理视野/照明的碰撞检测和图块墙壁判定
+ ｜  ├ Common.cpp
+ ｜  ├ Common.h		通用类定义，包含多种杂项功能
+ ｜  ├ Course.cpp
+ ｜  ├ Course.h		处理折线/曲线/圆形路径的类
+ ｜  ├ Effect.cpp
+ ｜  ├ Effect.h		特效动画类，与"对象显示特效"相关
+ ｜  ├ Gui.cpp
+ ｜  ├ Gui.h		处理"对象显示文本/变量值"、"显示文本"、"滚动文本"的类
+ ｜  ├ Macros.h		各种宏定义
+ ｜  ├ Object.cpp
+ ｜  ├ Object.h		对象类。包含无敌、伤害、强制移动、模板移动、路径移动、循环移动、残影等相关功能
+　　・ObjectInvincible: 处理对象闪烁
+　　・ObjectWallInterset: 墙壁判定（可能已废弃）
+　　・ObjectCollision: 使用External/collision库进行碰撞检测
+　　・ObjectMovement: 处理移动、跳跃、重力、水中等行为
+　　・ObjectAction: 管理对象动作切换和执行
+ ｜  ├ ObjectCommand.cpp
+ ｜  ├ ObjectCommand.h	处理动作程序的指令和链接条件
+ ｜  ├ Particle.cpp
+ ｜  ├ Particle.h	粒子类
+ ｜  ├ PhysicsObject.cpp
+ ｜  ├ PhysicsObject.h	物理运算部件类
+ ｜  ├ Player.cpp
+ ｜  ├ Player.h		对象动画显示类，需优化RenderTexture使用和碰撞检测性能
+ ｜  ├ Portal.cpp
+ ｜  ├ Portal.h		传送门类
+ ｜  ├ RenderTexture.cpp
+ ｜  ├ RenderTexture.h	渲染纹理类，应避免过度使用
+ ｜  ├ Scene.cpp
+ ｜  ├ Scene.h		管理场景、图层、变量计时器、场景重力、游戏速度、画面震动（含淡入淡出）。SceneWater疑似未使用待确认删除
+ ｜  ├ Shader.cpp
+ ｜  ├ Shader.h		着色器类
+ ｜  ├ SharedMemory.cpp
+ ｜  ├ SharedMemory.h	共享内存类（用于编辑器粒子预览的画面捕获）
+ ｜  ├ Slope.cpp
+ ｜  ├ Slope.h		斜坡类
+ ｜  ├ Tile.cpp
+ ｜  ├ Tile.h		图块、子图块（自动图块用）、图块集管理类
+ ｜  ├ VideoSprite.cpp
+ ｜  ├ VideoSprite.h	视频精灵类（使用libVLC）
+ ｜  ├ ViewportLight.cpp
+ ｜  ├ ViewportLight.h	视野/照明类，处理计时器颜色、精灵、对象和图层
+ ｜  ├ WebSocket.cpp
+ ｜  └ WebSocket.h	WebSocket类（主要用于与编辑器通信）
+
+[主循环流程]
+
+- 从控制器获取输入数据
+- 更新场景
+　　- 更新摄像机
+　　- 处理重力和水面效果
+　　- 更新背景
+　　- 逐层更新场景
+　　　　- 更新对象
+　　　　　　- 输入检测
+　　　　　　- 更新动作
+　　　　　　　　- 检查动作链接条件
+　　　　　　　　- 切换动作
+　　　　　　- 更新动画（ImagePlayer/GifPlayer/SSPlayer）
+　　　　　　- 处理移动/缩放/旋转
+　　　　　　- 墙壁碰撞检测
+　　　　　　- 调试显示（碰撞区域/攻击区域）
+　　　　　　- 处理对象闪烁
+　　　　　　- 子弹发射处理
+　　　　- 更新图块
+　　　　　　- 图块动画
+　　　　　　- 图块机关
+　　　　- 处理对象攻击判定和碰撞
+　　　　- 对象后期处理
+　　- 更新渲染纹理和着色器
+- 更新调试图形（线/矩形/圆/椭圆）
+- 更新调试窗口和渲染
