@@ -1,48 +1,34 @@
-# Pixel Game Maker MV Player Open Source Edition
-日本語のREADMEは[こちら](README_JP.md)です。
+# Pixel Game Maker MV Player Open Source Edition JHVersion
 
-## Introduction
+## 介绍 / Introduction
 
-"Pixel Game Maker MV Player Open Source Edition" is an open source version of the player application need to run games and software made with "Pixel Game Maker MV" (PGMMV) for Windows.
+- 这个`Pixel Game Maker MV Player Open Source Edition JHVersion`是根据`Pixel Game Maker MV Player Open Source Edition`修改而来的版本，该版本添加了Steamworks API的jsb绑定支持.
+- `Pixel Game Maker MV Player Open Source Edition JHVersion` is a modified version of the `Pixel Game Maker MV Player Open Source Edition` which adds support for the Steamworks API.
+- My English is not very good, to avoid ambiguity, so the documentation about how to use it is only in Chinese.
 
-## What is this project?
+## 使用说明 / Usage Instructions
 
-This project is a project aimed at improving the PGMMV player application with support from the community and game creators.
-Improvements developed by this project will be distributed to all PGMMV users by Gotcha Gotcha Games.
-The current version of the player used for this project is 1.0.6.5, which does not reflect the fixes made in 1.0.6.6 or later.
+- 怎么使用
+- js调用文档[SteamInterfaceDesc.md](Player/doc/JHVersion/SteamInterfaceDesc.md)
 
-## How to join
+## 为什么会有这个版本？ / Why This Version Exists?
 
-- This project uses English as the main language, though Japanese is also allowed.
-- This project follows Github Flow rules. Please prepare a new branch for any Pull Requests (PR). Once the PR is approved it must be merged to master branch. http://scottchacon.com/2011/08/31/github-flow.html
-- This project requires use of "Visual Studio 2022 Community" with C++ components.
-- The version of "cocos2d-x" used by this project is 3.17.1.
-- Project discussions will be carried out on the official Pixel Game Maker MV Discord channel: https://discord.com/invite/FtRVRkx5tP
+- 一个朋友使用pgmmv开发了一款游戏，找我制作SteamWorksAPI的支持，我发现了这个开源版本，同时制作了两套方案来支持steam的成就系统，这是其中一套方案。
+- A friend developed a game using pgmmv and asked me to create support for the SteamWorks API. I discovered this open-source version and created two solutions to support Steam’s achievement system. This is one of the solutions.
+- 很多开发者不需要SteamWorks API里面复杂的功能，只需要解锁成就就行，所以没有封装更多的功能。
+- Many developers don’t need the complex features in the SteamWorks API, they just need to unlock achievements, so I didn’t wrap additional functionalities.
 
-## Roadmap
+## 怎么反馈
+- 可以加入discord讨论 https://discord.gg/qJ8TsNhtqU
+- join the Discord: https://discord.gg/qJ8TsNhtqU
 
-Initially this project aims to fix outstanding bugs.
-Contributors are allowed to create a customized version of the player that improves performance for their game, but for the time being only bug fix PRs will be accepted.
-Contributors will have their names added to the "Pixel Game Maker MV" developer credits
+## 声明
+- 本开源项目的代码仅供学习和研究使用。对于任何恶意使用、损害或由此引发的后果，本项目不承担任何责任。代码按原样提供，不提供任何形式的保证或担保。使用者需自行承担使用本代码的所有风险，并确保其使用符合相关法律法规及最佳实践。
 
-## How to build
+## 许可证 / License
 
-Please review the included readme: [readme_e.txt](/Installer/readme_e.txt)
-
-## How to use cutomized version of the player
-
-From November 21, 2023, it will be possible to use a customized Player component via the “1.0.6-Osplayer-beta” branch on Steam.
-After enabling this branch, you will have the option to specify versions to use for the Player, Runtime, and Debugging Runtime components.
-
-### Player: This is the version of the Player component used when performing a test play via the PGMMV editor.
-The default version is the normal Player component installed with PGMMV’s editor at (install folder)/player-win/player.exe.
-### Runtime: This is the version of the Player component packaged with a game during the build process, and thus is the version people who play your game will use.
-The default version is the one included with a PGMMV install: (install folder)/resource/runtime.zip
-### Debugging Runtime: A version of the Runtime used when a game is built with the debug flag enabled.
-The default version is the one included with a PGMMV install: (install folder)/resource/debugMenuRuntime.zip
-
-
-## License
-
-This content is released under the MIT License.
+- This project, like the original "Pixel Game Maker MV Player Open Source Edition," is released under the MIT License.
 [LICENSE](LICENSE)
+- The Steam-related code and distributable binaries included in this open-source project are proprietary to [Valve](https://www.valvesoftware.com) and are protected by copyright. Any form of use requires authorization from [Valve](https://www.valvesoftware.com).
+- SteamWorks SDK User Agreement
+  [Valve Corporation Steamworks SDK Access Agreement](https://partner.steamgames.com/documentation/sdk_access_agreement)

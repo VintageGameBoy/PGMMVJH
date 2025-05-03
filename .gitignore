@@ -1,5 +1,8 @@
 *.user
 *.qm
+.vs
+.idea
+cmake-build-debug
 Installer/debugMenuRuntime
 Installer/player
 Installer/runtime
