@@ -432,6 +432,20 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\steam_appid.txt" "$
       </ForcedIncludeFiles>
     </ClCompile>
     <ClCompile Include="..\Classes\External\SplineInterp\SplineInterp.cpp" />
+    <ClCompile Include="..\Classes\External\Twofish\twofish.c">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Runtime|Win32'">NotUsing</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='DebugMenuRuntime|Win32'">NotUsing</PrecompiledHeader>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='Runtime|Win32'">
+      </ForcedIncludeFiles>
+      <ForcedIncludeFiles Condition="'$(Configuration)|$(Platform)'=='DebugMenuRuntime|Win32'">
+      </ForcedIncludeFiles>
+    </ClCompile>
     <ClCompile Include="..\Classes\External\SSPlayer\Common\Animator\ssplayer_effect.cpp" />
     <ClCompile Include="..\Classes\External\SSPlayer\Common\Animator\ssplayer_effect2.cpp" />
     <ClCompile Include="..\Classes\External\SSPlayer\Common\Animator\ssplayer_effectfunction.cpp" />
@@ -543,6 +557,7 @@ xcopy /Y /Q /S /E /D "$(ProjectDir)..\Classes\External\steam\steam_appid.txt" "$
     <ClInclude Include="..\Classes\External\gif\gif_lib.h" />
     <ClInclude Include="..\Classes\External\gif\gif_lib_private.h" />
     <ClInclude Include="..\Classes\External\SplineInterp\SplineInterp.h" />
+    <ClInclude Include="..\Classes\External\Twofish\twofish.h" />
     <ClInclude Include="..\Classes\External\SSPlayer\Common\Animator\MersenneTwister.h" />
     <ClInclude Include="..\Classes\External\SSPlayer\Common\Animator\ssplayer_cellmap.h" />
     <ClInclude Include="..\Classes\External\SSPlayer\Common\Animator\ssplayer_effect.h" />

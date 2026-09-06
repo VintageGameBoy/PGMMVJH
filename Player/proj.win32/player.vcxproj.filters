@@ -55,6 +55,9 @@
     <Filter Include="src\External\SplineInterp">
       <UniqueIdentifier>{e1e3bb20-eb0a-4e9f-a26c-24e96c6d6b05}</UniqueIdentifier>
     </Filter>
+    <Filter Include="src\External\Twofish">
+      <UniqueIdentifier>{a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d}</UniqueIdentifier>
+    </Filter>
     <Filter Include="src\Lib\Jsb">
       <UniqueIdentifier>{0d537eef-2820-4fce-97d7-46c8b8c47059}</UniqueIdentifier>
     </Filter>
@@ -251,6 +254,9 @@
     </ClCompile>
     <ClCompile Include="..\Classes\External\SplineInterp\SplineInterp.cpp">
       <Filter>src\External\SplineInterp</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\External\Twofish\twofish.c">
+      <Filter>src\External\Twofish</Filter>
     </ClCompile>
     <ClCompile Include="..\Classes\Data\OthersData.cpp">
       <Filter>src\Data</Filter>
@@ -832,6 +838,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\External\SplineInterp\SplineInterp.h">
       <Filter>src\External\SplineInterp</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\External\Twofish\twofish.h">
+      <Filter>src\External\Twofish</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Data\OthersData.h">
       <Filter>src\Data</Filter>

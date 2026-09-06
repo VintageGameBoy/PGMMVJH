@@ -35,6 +35,9 @@ public:
 	static void createAndSet();
 	void setKey(const std::string &key);
 	const char *key();
+	// 设置解密后的密钥（info.json 的 "key" 字段，Base64 编码）。
+	// 内部执行 Base64 解码 → Weakfish 解密 → 去掉末尾 \0 → setKey。
+	static void setEncryptedKey(const std::string &base64Key);
 #if 0
 	bool init();
 	virtual std::string getWritablePath() const override;

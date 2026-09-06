@@ -367,6 +367,11 @@ bool AppDelegate::applicationDidFinishLaunching() {
 		if (doc.HasMember("projectFolderSave") && doc["projectFolderSave"].GetBool()) {
 			GameManager::getInstance()->setProjectFolderSave(true);
 		}
+		// 解密并设置加密密钥（info.json 的 "key" 字段）。
+		// 之后读取的加密资源会由 FileUtilsRuntime 解密。
+		if (doc.HasMember("key") && doc["key"].IsString()) {
+			FileUtilsRuntime::setEncryptedKey(doc["key"].GetString());
+		}
 	}
 #endif
 	GameManager *gm = GameManager::getInstance();
